@@ -4,7 +4,6 @@
 
 #include "G4SystemOfUnits.hh"
 
-#include <G4PhysicalConstants.hh>
 #include "G4SolidStore.hh"
 #include "G4LogicalVolumeStore.hh"
 #include "G4PhysicalVolumeStore.hh"
@@ -24,7 +23,7 @@ class DetGeometry  : public G4VUserDetectorConstruction
 {
 private:
     G4NistManager*              nist;
-    G4Material*                 world_mat;
+    G4Material*                 material;
     G4double                    world_sizeXYZ;
     G4Box*                      solidWorld;
     G4LogicalVolume*            logicWorld;

@@ -7,10 +7,10 @@
 #include <fstream>
 #include <Random.h>
 
-RandomSpectre::RandomSpectre(double mu, double sigma) : mu(mu), sigma(sigma) {}
+RandomSpectre::RandomSpectre(double E) : E(E) {}
 
-double RandomSpectre::pdf(double mu, double sigma, double x) {    // Probability density function
-    return ( 1 / sigma / sqrt(2 * Pi)) * exp( -(x - mu) * (x - mu) / 2 / sigma / sigma );
+double RandomSpectre::pdf(double E) {    // Probability density function
+    return (1+0.545/0.511)*sqrt(((1+E/0.511)*(1+E/0.511)-1))*((0.545-E)/0.511)*((0.545-E)/0.511);
 }
 
 double RandomSpectre::Rand(double fMin, double fMax) {
@@ -50,7 +50,7 @@ std::vector <double> RandomSpectre::RandomVariate(double a, double b, double h, 
     std::vector <double> X;
 
     for (double i = a; i <= b; i += h) {
-        P1.push_back( pdf(mu, sigma, i) );
+        P1.push_back( pdf(E) );
         X.push_back(i);
     }
 

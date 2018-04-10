@@ -8,13 +8,13 @@
 class RandomSpectre {
 public:
     const double Pi = 3.141592653589793;
-    double mu;          // МатОжидание
-    double sigma;
 
-    RandomSpectre (double mu, double sigma);
+    double E;
+
+    RandomSpectre (double E);
     ~RandomSpectre() = default;
 
-    double pdf (double mu, double sigma, double x);
+    double pdf (double E);
     double Rand (double fMin, double fMax);
     void print (std::vector <double> A);
     double Mean(std::vector <double> A);
