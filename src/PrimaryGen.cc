@@ -1,6 +1,7 @@
 
 #include <Randomize.hh>
 #include <G4Electron.hh>
+#include <G4Neutron.hh>
 #include "PrimaryGen.hh"
 #include "Random.h"
 
@@ -15,11 +16,11 @@ PrimaryGen::~PrimaryGen() {
 }
 
 void PrimaryGen::GeneratePrimaries(G4Event* anEvent) {
-   RandomSpectre a(0);
-   G4double E = a.RandomVariate(0,0.545,0.01,1)[0]* MeV;
+//   RandomSpectre a(0);
+//   G4double E = a.RandomVariate(0,0.545,0.01,1)[0]* MeV;
 
-    gun->SetParticleDefinition(G4Electron::ElectronDefinition());
-    gun->SetParticleEnergy(E);
+    gun->SetParticleDefinition(G4Neutron::NeutronDefinition());
+    gun->SetParticleEnergy(0.025*eV);
 
 
     double  px, py, pz, R{75*mm};
@@ -30,7 +31,7 @@ void PrimaryGen::GeneratePrimaries(G4Event* anEvent) {
         pz = (2*G4UniformRand()-1) * cm;
     } while (sqrt(px*px + py*py + pz*pz) > R);
 
-   gun->SetParticlePosition(G4ThreeVector(px, py-300, pz+200));
+   gun->SetParticlePosition(G4ThreeVector(px, py, pz));
     G4double X{2*G4UniformRand()-1}, Y{2*G4UniformRand()-1}, Z{2*G4UniformRand()-1};
     double l = sqrt(X*X+Y*Y+Z*Z);
 
