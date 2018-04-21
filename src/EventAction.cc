@@ -18,6 +18,10 @@ void EventAction::EndOfEventAction(const G4Event *anEvent) {
 
 }
 
+void EventAction::AddSmth(G4String name, G4double energy) {
+
+}
+
 
 
 

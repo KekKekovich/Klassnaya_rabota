@@ -8,13 +8,15 @@
 #include <G4UserSteppingAction.hh>
 #include <EventAction.hh>
 #include "EventAction.hh"
-
+class EventAction;
 class StepAction: public G4UserSteppingAction{
 private:
     EventAction* eventAction;
 public:
     StepAction(EventAction* event);
     void UserSteppingAction(const G4Step*);
+
+
 };
 
 
