@@ -14,14 +14,25 @@ void EventAction::BeginOfEventAction(const G4Event *anEvent) {
 }
 
 void EventAction::EndOfEventAction(const G4Event *anEvent) {
+    if (newmap->size()>=0) {
+        newmap->clear();
+    }
 
 
 }
 
-void EventAction::AddSmth(G4String name, G4double energy) {
-
+EventAction::EventAction(RunAction* _run) : run(_run) {
+    newmap = new std::map<G4String, G4double>();
 }
 
+void EventAction::AddSmth(const G4String name, G4double energy) {
+    if(newmap->find(name)==newmap->end())
+    newmap->emplace(name,energy);
 
+
+
+else
+        newmap->find(name)->second +=energy;
+}
 
 

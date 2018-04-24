@@ -9,8 +9,11 @@
 
 void RunAction::BeginOfRunAction(const G4Run *aRun) {
     G4UserRunAction::BeginOfRunAction(aRun);
+
+
 }
 
 void RunAction::EndOfRunAction(const G4Run *aRun) {
     G4UserRunAction::EndOfRunAction(aRun);
+
 }

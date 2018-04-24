@@ -9,15 +9,20 @@
 #include "G4RunManager.hh"
 #include "RunAction.hh"
 #include "StepAction.hh"
+using namespace std;
 
 
 class EventAction : public G4UserEventAction
 {
 private:
-    RunAction* RunAction;
+    map <G4String, G4double> *newmap;
+    RunAction* runAction;
+
+
+//    newmap.emplace();
 public:
-    EventAction();
-    ~EventAction();
+    EventAction(RunAction *runAction);
+
     virtual void BeginOfEventAction(const G4Event* event);
     virtual void EndOfEventAction(const G4Event* event);
     void AddSmth(G4String name, G4double energy);
@@ -25,4 +30,3 @@ private:
 
 };
 
-#endif //CPROJECT_EVENTACT_HH
